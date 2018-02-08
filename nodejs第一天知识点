@@ -1,0 +1,31 @@
+1、node.js的特点：1、单线程
+                2、非阻塞I/O
+                3、事件驱动机制
+
+2、内核 是谷歌V8
+
+3、应用：不合适大量计算，它的特长是调度，它缺少很多服务器考量，所以不能应用在电信，银行等。
+
+4、运行：nodej是服务器程序，写的js都运行在服务器上。
+
+5、nodejs没有根目录，没有web容器。
+
+6、nodejs单个元素如图片css文件都要给路由才能访问。
+
+7、nodejs要在相对路径下才能访问（必须要cd到文件夹再运行node才能正常创建服务器操作）。
+
+x、用迭代器完成异步变同步（循环中有i/o异步处理，得出的结果会是空值），于是用递归函数完成循环效果。
+    fs.readdir('./aaa', function(err, files){
+        (function getdrty (i) {
+            if (i == files.length) {
+                console.log(drty);
+                return;
+            }
+            fs.stat('./aaa/'+files[i], function(err,stats){
+                if (stats.isDirectory()) {
+                    drty.push(files[i]);
+                }
+                getdrty(i+1);
+            })
+        })(0)
+    })

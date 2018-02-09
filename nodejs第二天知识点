@@ -1,0 +1,5 @@
+1、  在nodejs中不可能用只一个js文件做服务器文件，一定会用到多个js文件，一个js基本就是一个模块。
+    js文件间的引用方法如下（一种引用，两种暴露）：
+    var myrep = require('./test1.js');//这是引用
+    exports.msg = msg;//对方文件必须要暴露，这种暴露一般用于变量，函数等
+    module.exports = Myclass;//这种暴露用于类的暴露。

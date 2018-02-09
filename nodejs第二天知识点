@@ -1,5 +1,19 @@
-1、  在nodejs中不可能用只一个js文件做服务器文件，一定会用到多个js文件，一个js基本就是一个模块。
+一、  在nodejs中不可能用只一个js文件做服务器文件，一定会用到多个js文件，一个js基本就是一个模块。
     js文件间的引用方法如下（一种引用，两种暴露）：
-    var myrep = require('./test1.js');//这是引用
+    var myrep = require('./test1.js');//这是引用,根目录要写./
     exports.msg = msg;//对方文件必须要暴露，这种暴露一般用于变量，函数等
     module.exports = Myclass;//这种暴露用于类的暴露。
+
+二、 1、引用的时候不写./如：var myrep = require('test1.js');就会从node_modules文件夹里引用
+    2、ode_modules文件夹可以移到任何一个上级目录，不受影响。
+    3、可以通过系统文件来设置node_modules所在的位置。
+    4、var myrep = require('test');//相当于获取的是ode_modules文件夹内的一个目录，默认是里面的index.js文件。
+    5、可以通过test文件夹内的package.json文件里的"main": "index.js",来设置默认计取文件。
+
+三、1、登陆www.npmjs.com可以查找合适自己用的模块。
+    2、通过npm installl 模块名 就可以直接安装模块用了。
+    3、也可以下载完包之后拷贝到node_modules文件夹里，再进行安装操作。
+    4、把工程移动的时候不用带node_modules文件夹，到别处后，再用npm install就会自动安装所有的用的包。
+
+四、1、require是从当前js出发的。
+    2、而fs则是从运行的光标出发的，为了避免搞混，用绝对路径加_dirname+文件名来找到路径。

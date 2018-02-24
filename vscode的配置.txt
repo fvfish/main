@@ -1,0 +1,6 @@
+1、让ejs里写代码和html一样，code>首选项>设置，然后在用户设置中输入
+    "emmet.includeLanguages": {
+        "ejs": "html"
+       },
+    "files.associations": {"*.ejs":"html"}
+    最后重启vscode。
